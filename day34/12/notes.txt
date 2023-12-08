@@ -1,0 +1,18 @@
+Disabling a specific interrupt line
+===================================
+
+Disabling a specific interrupt line is also called as masking out an interrupt line.
+
+Example: you might want to disable delivery of a device’s interrupts before manipulating its state.
+
+void disable_irq(unsigned int irq); //Disables a given interrupt line in interrupt controller.
+			            // this disables delivery of the given interrupt to all processors in system
+
+void enable_irq(unsigned int irq);
+
+Note: disable_irq does not return until any executing handler completes.
+	callers are assured that
+		a) new interrupts will not be delivered on the given line,
+		b) any already executing handlers have exited
+
+
